@@ -4,7 +4,7 @@
 
 
 #include "LZespolona.hh"
-
+#include <iostream>
 
 /*!
  * Modeluje zbior operatorow arytmetycznych.
@@ -27,9 +27,11 @@ struct WyrazenieZesp {
  * Funkcje ponizej nalezy zdefiniowac w module.
  *
  */
-
-
-void Wyswietl(WyrazenieZesp  WyrZ);
+std::istream &operator>>(std::istream &Wejscie, Operator &oper);
+std::ostream &operator<<(std::ostream &Wyjscie, const Operator &oper);
+std::ostream &operator<<(std::ostream &Wyjscie, const WyrazenieZesp &Zesp_Wyjscie);
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
+std::istream &operator>>(std::istream &Wejscie, WyrazenieZesp &Zesp_Wejscie);
+bool operator ==(const WyrazenieZesp &Zesp1, const WyrazenieZesp &Zesp2);
 
 #endif
