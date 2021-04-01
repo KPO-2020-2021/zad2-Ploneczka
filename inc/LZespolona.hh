@@ -34,6 +34,12 @@ LZespolona operator/(LZespolona Skl1, LZespolona Skl2);
 
 LZespolona operator/(LZespolona Skl1, double Skl2);
 
+double arg(LZespolona z);
+
+LZespolona operator/=(LZespolona &Skl1, const LZespolona &Skl2);
+
+LZespolona operator+=(LZespolona &Skl1, const LZespolona &Skl2);
+
 LZespolona Sprzezenie(LZespolona zespolona);
 
 double Modul2(LZespolona zespolona);

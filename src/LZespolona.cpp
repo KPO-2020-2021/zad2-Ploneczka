@@ -170,3 +170,25 @@ std::istream &operator>>(std::istream &Wejscie, LZespolona &Zesp_Wejscie)
   }
   return Wejscie;
 }
+LZespolona operator/=(LZespolona &Skl1, const LZespolona &Skl2){
+  if(Skl2 == LZespolona{0,0})
+  {
+    throw std::runtime_error("Nie dziel przez 0");
+  }
+  Skl1.re /= Skl2.re;
+  Skl1.im /= Skl2.im;
+  return Skl1;
+}
+LZespolona operator+=(LZespolona &Skl1, const LZespolona &Skl2)
+{
+  Skl1.re += Skl2.re;
+  Skl1.im += Skl2.im;
+  return Skl1;
+}
+
+double arg(LZespolona z)
+{
+  double radiany;
+  radiany = atan2(z.im, z.re);
+  return radiany;
+}

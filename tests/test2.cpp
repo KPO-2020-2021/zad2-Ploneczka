@@ -151,3 +151,135 @@ TEST_CASE("Test wyliczanie % statystyki"){
     CHECK( x == 60); 
 }
 
+TEST_CASE("Test wyliczanie radianow"){
+    LZespolona z;
+    double x;
+    z.re = 1;
+    z.im = 0;
+
+    x = arg(z);
+
+    CHECK( x == 0);
+}
+
+TEST_CASE("Test wyliczanie radianow"){
+    LZespolona z;
+    double x;
+    z.re = 2;
+    z.im = 2;
+
+    x = arg(z);
+
+    CHECK( x == M_PI/4);
+}
+TEST_CASE("Test LZespolona += 1"){
+    LZespolona z,y, x;
+    z.re = 3;
+    z.im = 5.2;
+
+    y.re = 4.1;
+    y.im = 2.3;
+
+    x = (z += y);
+
+    CHECK( z == x);
+
+}
+
+TEST_CASE("Test LZespolona += 2"){
+    LZespolona z,y, x;
+    z.re = 3;
+    z.im = 5.2;
+
+    y.re = 0;
+    y.im = 0;
+
+    x = (z += y);
+
+    CHECK( z == x);
+
+}
+
+TEST_CASE("Test LZespolona += 3"){
+    LZespolona z,y, x;
+    z.re = 3;
+    z.im = 5.2;
+
+    y.re = 0.0;
+    y.im = 0.0;
+
+    x = (z += y);
+
+    CHECK( z == x);
+
+}
+
+TEST_CASE("Test LZespolona += 4"){
+     LZespolona z,y, x;
+    z.re = 3;
+    z.im = 5.2;
+
+    y.re = 0.00001;;
+    y.im = 0.00001;;
+
+    x = (z += y);
+
+    CHECK( z == x);
+    
+}
+TEST_CASE("test LZespolona += 5"){
+    LZespolona x, y, z;
+
+    z.re = 0.00009;
+    z.im = 0.00009;
+
+    y.re = 0.00001;
+    y.im = 0.00001;
+
+   x = (z += y);
+
+    CHECK( z == x);
+}
+
+TEST_CASE("Test LZespolona dzielenie /= 1") {
+    LZespolona x, y, z;
+
+    
+    x.re = 2;
+    x.im = 3;
+
+    y.re = 2;
+    y.im = 1;
+
+   z = (x /= y);
+
+    CHECK( z == x);
+}
+
+TEST_CASE("Test LZespolona dzielenie /= 2") {
+    LZespolona x, y, z;
+
+    
+    x.re = 2;
+    x.im = 3;
+
+    y.re = 0;
+    y.im = 0;
+
+    z = (x += y);
+
+    WARN_THROWS( x /=y);
+}
+
+TEST_CASE("Test LZespolona dzielenie /3 przez skalar ") {
+    LZespolona x, y;
+    double t = 2;
+    
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 1;
+    y.im = 1;
+   
+    CHECK(x/t == y);
+}
